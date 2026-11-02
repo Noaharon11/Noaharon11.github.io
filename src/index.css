@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-padding-top: 5rem;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-ink-950 font-sans text-[17px] leading-relaxed text-slate-300 antialiased;
+  }
+
+  ::selection {
+    @apply bg-band/30 text-white;
+  }
+
+  :focus-visible {
+    @apply rounded outline outline-2 outline-offset-4 outline-band;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .card {
+    @apply rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm transition-colors duration-300;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[15px] font-semibold transition duration-200 hover:-translate-y-0.5;
+  }
+
+  .btn-primary {
+    @apply btn bg-band text-ink-950 shadow-[0_0_24px_-6px] shadow-band/60 hover:bg-[#62d4c5];
+  }
+
+  .btn-ghost {
+    @apply btn border border-white/15 text-slate-200 hover:border-white/40 hover:bg-white/5;
+  }
+
+  .chip {
+    @apply rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[13px] text-slate-300;
+  }
+}
+
+/* Faint grid that fades out toward the bottom of the hero */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at top, black 30%, transparent 75%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
